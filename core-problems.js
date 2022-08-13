@@ -205,6 +205,151 @@ function maxInArray(numbers) {
     return largest;
 }
 
-const heights = [167, 190, 120, 165, 137, 265];
+const heights = [165, 197, 135, 167, 139, 365];
 const tallest = maxInArray(heights);
 // console.log('tallest person is: ', tallest);
+
+//-------------------------asignment--------------------------------
+
+
+//------------------radianToDegree---------------
+
+function radianToDegree(radian) {
+    if (typeof radian === 'number') {
+        let degree = radian * (180 / Math.PI);
+        degree = degree.toFixed(2);
+        degree = parseFloat(degree);
+        return degree;
+    }
+    else {
+        return 'Please enter a number';
+    }
+}
+
+// const getDegree = radianToDegree(199);
+// console.log(getDegree)
+
+//----------------isJavaScriptFile--------------
+
+function isJavaScriptFile(String) {
+    if (typeof String === 'string') {
+        let reversed = '';
+        for (let i = String.length - 1; i >= 0; i--) {
+            const element = String[i];
+            reversed = reversed + element;
+        }
+        const newReversed = reversed.toLowerCase();
+        if (newReversed.indexOf('s') === 0 && newReversed.indexOf('j') === 1 && newReversed.indexOf('.') === 2) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+    else {
+        return 'Please enter a string';
+    }
+}
+
+// const jsFile = isJavaScriptFile('new.js');
+// console.log(jsFile);
+
+//--------------oilPrice--------------
+
+function oilPrice(diselLiter, petrolLiter, octaneLiter) {
+    if (typeof diselLiter === 'number' && typeof petrolLiter === 'number' && typeof octaneLiter === 'number') {
+        const diselPrice = 114;
+        const petrolPrice = 130;
+        const octanePrice = 135;
+        const totalDiselPrice = diselPrice * diselLiter;
+        const totalPetrolPrice = petrolPrice * petrolLiter;
+        const totalOctanePrice = octanePrice * octaneLiter;
+        const total = totalDiselPrice + totalPetrolPrice + totalOctanePrice;
+        return total;
+    }
+    else {
+        return 'Please enter numbers';
+    }
+}
+
+// const coast = oilPrice(1, 1, 1);
+// console.log(coast);
+
+//-------------publicBusFare------------
+
+function publicBusFare(passengers) {
+    const busCapacity = 50;
+    const microbusCapacity = 11;
+    const publicBusTicketPrice = 250;
+    if (typeof passengers === 'number') {
+        const microbusPassengers = passengers % busCapacity;
+        const publicBusPassengers = microbusPassengers % microbusCapacity;
+        const totalPublicBusTicketPrice = publicBusTicketPrice * publicBusPassengers;
+        return totalPublicBusTicketPrice;
+    }
+    else {
+        return 'Please enter a number';
+    }
+}
+
+// const total = publicBusFare(365);
+// console.log(total);
+
+//---------------isBestFriend--------------
+
+function isBestFriend(object1, object2) {
+    if (typeof object1 === 'object' && typeof object2 === 'object') {
+        if (Array.isArray(object1) !== true && Array.isArray(object2) !== true) {
+            const name1 = object1.name.toLowerCase();
+            const name2 = object2.name.toLowerCase();
+            const friend1 = object1.friend.toLowerCase();
+            const friend2 = object2.friend.toLowerCase();
+            if (name1 === friend2 && friend1 === name2) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+        else {
+            return 'Please enter objects';
+        }
+    }
+    else {
+        return 'Please enter objects';
+    }
+}
+
+// const friend = isBestFriend({ name: "abul", friend: "sabul" }, [{ name: "kabul", friend: "abul" }]);
+// console.log(friend);
+
+//---------------startsWith endsWith----------------
+
+function isJavaScriptFile(String) {
+    if (typeof String === 'string') {
+        if (String.endsWith('.js')) {
+            return true;
+        }
+    }
+    else {
+        return 'Please enter a string';
+    }
+}
+
+const types = isJavaScriptFile('n.js');
+console.log(types);
+
+
+function isJavaScriptFile(String) {
+    if (typeof String === 'string') {
+        if (String.startsWith('n')) {
+            return true;
+        }
+    }
+    else {
+        return 'Please enter a string';
+    }
+}
+
+const typesn = isJavaScriptFile('n.js');
+console.log(typesn);

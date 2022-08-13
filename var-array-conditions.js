@@ -103,6 +103,9 @@ var elements = number.pop();
 // console.log(number)
 // console.log(elements)
 
+// check array using Array.isArray
+// console.log(Array.isArray(arrayName));
+
 //----------------------------------------------------------
 //---------------------------objects------------------------
 //----------------------------------------------------------
@@ -279,3 +282,97 @@ function add(num1, num2) {
 }
 
 const arg = add(12, 13, 45, 89, 78);
+
+//-----------------------------------------------------------
+//----------------------------math---------------------------
+//-----------------------------------------------------------
+
+const numbers = 2.451;
+const result1 = Math.round(numbers);
+const result2 = Math.ceil(numbers);
+const result3 = Math.floor(numbers);
+
+// console.log(result1);
+// console.log(result2);
+// console.log(result3);
+
+//-----------------------------------------------------------
+//-----------------------swap with temp----------------------
+//-----------------------------------------------------------
+
+let first = 5;
+let second = 7;
+// console.log(first, second);
+
+//------approach: 1------
+const temp = first;
+first = second;
+second = temp;
+
+//---approach: 2 Destructuring---
+[first, second] = [second, first];
+
+// console.log(first, second);
+
+//-----------------------------------------------------------
+//------------------------large with max---------------------
+//-----------------------------------------------------------
+
+const large = Math.max(15, 35, 55);
+// console.log(large);
+
+//-----------------------------------------------------------
+//-----------------------------splice------------------------
+//-----------------------------------------------------------
+
+
+const friends = [35, 47, 39, 65, 55, 57, 59, 67, 93, 95, 97];
+
+// Removes elements from an array 
+// and, if necessary, inserts new elements in their place, 
+// returning the deleted elements.
+// will change the original array
+const partial = friends.splice(99, 51, 73);
+// console.log(partial);
+// console.log(friends);
+
+//-----------------------------------------------------------
+//------------------------------slice------------------------
+//-----------------------------------------------------------
+
+const friend = [35, 47, 39, 65, 55, 57, 59, 67, 93, 95, 97];
+// dont chang the array
+
+const part = friends.slice(2, 5);
+// console.log(part);
+// console.log(friend);
+
+//-----------------------------------------------------------
+//---------------------------substring-----------------------
+//-----------------------------------------------------------
+
+const sentence = 'this is string'
+const partial1 = sentence.substring(3, 7);
+
+// console.log(partial1);
+
+//-----------------------------------------------------------
+//-----------------------------split-------------------------
+//-----------------------------------------------------------
+const sentences = 'this is string. another one. more.'
+
+const sentences1 = sentences.split(' ');
+const sentences2 = sentences.split('.')
+const sentences3 = sentences.split('');
+
+// console.log(sentences3);
+
+//-----------------------------------------------------------
+//----------------------------abs----------------------------
+//-----------------------------------------------------------
+
+let c = -5;
+let a = Math.abs(c);
+const b = Math.abs(-5);
+
+// console.log(b);

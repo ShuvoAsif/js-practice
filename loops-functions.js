@@ -198,3 +198,41 @@ const myAverage = getAverage(a1m, a2m, a3m);
 // console.log(myAverage)
 // console.log(myAverage.toFixed(3))
 
+//---------------------------------------------------------
+//-------------------------reverse-------------------------
+//---------------------------------------------------------
+
+function reverseWords(str) {
+    const words = str.split(' ');
+    const result = [];
+    for (let i = words.length - 1; i >= 0; i--) {
+        const element = words[i];
+        result.push(element);
+    }
+    const reversed = result.join(' ');
+    return reversed;
+}
+
+
+const myString = 'I am a good boy';
+const reverse = reverseWords(myString);
+// console.log(reverse)
+
+//---------------------remove duplicate--------------------
+
+
+const names = ['dhaka', 'chittagong', 'khulna', 'cumilla', 'dhaka', 'khulna', 'khulna', 'chandpur'];
+
+function removeDuplicate(names) {
+    const unique = [];
+    for (let i = 0; i < names.length; i++) {
+        const name = names[i];
+        if (unique.includes(name) === false) {
+            unique.push(name);
+        }
+    }
+    return unique;
+}
+
+const uniqueNames = removeDuplicate(names);
+// console.log(uniqueNames);
