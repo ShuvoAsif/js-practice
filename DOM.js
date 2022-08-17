@@ -256,11 +256,13 @@ document.getElementById('make-goldenrod').addEventListener('click', function () 
     document.body.style.backgroundColor = 'goldenrod';
 })
 
+//---------------------------------------------
 //-------------------most use------------------
+//---------------------------------------------
 
-{/* <button onclick="handleOnClick()">Handle Event by Add onclick Function</button> */ }
-<button id="event-listener">Handle event by addEventListener</button>
-{/* <script> */ }
+// {/* <button onclick="handleOnClick()">Handle Event by Add onclick Function</button> */ }
+// {/* <button id="event-listener">Handle event by addEventListener</button> */}
+// {/* <script> */ }
 // option 1
 function handleOnClick() {
     const handlerStatus = document.getElementById('handler-status');
@@ -281,4 +283,154 @@ document.getElementById('btn-update').addEventListener('click', function () {
     p.innerText = inputText;
     inputField.value = '';
 })
-{/* </script> */ }
+// {/* </script> */ }
+
+//-------------------more event-----------------
+
+
+// <h1>Explore More events</h1>
+// <button id="btn-more">Events</button>
+// <input id="text-field" type="text">
+
+// document.getElementById('text-field').addEventListener('focus', function(){
+//     console.log('Event triggered inside the input field')
+// })
+// document.getElementById('text-field').addEventListener('blur', function(){
+//     console.log('Event triggered inside the input field blur')
+// })
+// document.getElementById('text-field').addEventListener('keydown', function(event){
+//     console.log(event.target.value)
+// })
+// document.getElementById('text-field').addEventListener('keypress', function(event){
+//     console.log(event.target.value)
+// })
+document.getElementById('text-field').addEventListener('keyup', function (event) {
+    console.log(event.target.value)
+})
+document.getElementById('btn-more').addEventListener('mousemove', function () {
+    console.log('Event Triggered');
+});
+
+//--------------------------------------------------------------------
+//-------------------------github delet button------------------------
+//--------------------------------------------------------------------
+
+// {/* <h1 id="secret-info">My secret info</h1> */ }
+// {/* <input id="delete-confirm" type="text" placeholder="please type delete"> */ }
+// {/* <button id="btn-delete" disabled>Delete</button> */ }
+document.getElementById('delete-confirm').addEventListener('keyup', function (event) {
+    const text = event.target.value;
+    const deleteButton = document.getElementById('btn-delete');
+    if (text === 'delete') {
+        deleteButton.removeAttribute('disabled');
+    }
+    else {
+        deleteButton.setAttribute('disabled', true);
+    }
+})
+document.getElementById('btn-delete').addEventListener('click', function () {
+    const secret = document.getElementById('secret-info');
+    secret.style.display = 'none';
+})
+
+//--------------------------------------------------------
+//------------------------comment-------------------------
+//--------------------------------------------------------
+
+
+// <h1>Please add your comment</h1>
+// <div id="comment-container">
+// <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloremque aperiam autem nisi ipsam suscipit fugit quisquam earum atque inventore eos eligendi quasi repudiandae vel dicta, libero expedita voluptatem nemo perspiciatis odit officiis. Molestias consequuntur excepturi maiores reprehenderit qui explicabo, quidem fugit voluptatibus officiis, facilis voluptates deserunt, non quod ratione quisquam?</p>
+// <p>Soluta dolores iure consectetur vel laboriosam quia nihil ut eveniet mollitia nostrum numquam quas explicabo voluptates amet, laborum architecto totam quos voluptatum quaerat? Itaque est reiciendis excepturi qui, id quisquam, vero asperiores nemo earum eos molestiae eaque ex quaerat provident! Sequi voluptas dolorem impedit accusamus repellendus laudantium eveniet rerum laborum!</p>
+// <p>Doloremque eius commodi pariatur? Ea, libero doloribus temporibus eos exercitationem, quo sed vero quaerat eveniet alias fuga quas, fugit porro quod sit. Tempore rem aliquam id culpa dolorem voluptatum cum illo labore. Non, fuga sapiente, iure ab, dicta deserunt magni illo sunt explicabo expedita cupiditate voluptatem consequatur voluptate nobis doloribus.</p>
+// </div>//
+// <div>
+// <textarea name="" id="new-comment" cols="60" rows="5"></textarea>
+// <br>
+// {/* <button id="btn-post">Post</button> */}
+// </div>
+// step-1: add event listener to the post button
+document.getElementById('btn-post').addEventListener('click', function () {
+    // step-2: get the comment inside the text area
+    const commentBox = document.getElementById('new-comment');
+    const newComment = commentBox.value;
+
+    // step-3: set the comment  inside the comment container
+    // 1. get the comment conatiner
+    // 2. create a new element (p tag)
+    // 3. set the text of the comment as innerText of the p tag
+    // 4. add the p tag using appendChild
+    const commentContainer = document.getElementById('comment-container');
+    const p = document.createElement('p');
+    p.innerText = newComment;
+    commentContainer.appendChild(p);
+
+    // step-4: clear the text area
+    commentBox.value = '';
+})
+
+
+//--------------------------------------------------------------
+//---------------------------bubble-----------------------------
+//--------------------------------------------------------------
+
+
+//-------------to stop bubble without siblingnode---------------
+
+document.getElementById('item-2').addEventListener('click', function (event) {
+    console.log('Item-2 clicked');
+    event.stopPropagation();
+})
+
+//-----------------------to stop bubble--------------------------
+
+document.getElementById('item-2').addEventListener('click', function (event) {
+    console.log('Item-2 clicked');
+    event.stopImmediatePropagation();
+});
+
+//-------------------------event bubble--------------------------
+
+
+// {/* <body id="body"> */}
+// <h1>Exploring Event Bubble</h1>
+// <section id="list-container">
+// <ul id="list-ul">
+// <li id="item-1">Lorem, ipsum.</li>
+// <li id="item-2">At, repudiandae.</li>
+// <li id="item-3">Explicabo, dolorem.</li>
+// <li id="item-4">Veritatis, perspiciatis!</li>
+// <li id="item-5">Accusantium, officia.</li>
+// <li id="item-6">quibusdam!</li> }
+// </ul >
+// </section >
+// <script>
+document.getElementById('item-2').addEventListener('click', function (event) {
+    console.log('Item-2 clicked');
+    event.stopImmediatePropagation();
+});
+document.getElementById('item-2').addEventListener('click', function (event) {
+    console.log('Item-2 second clicked');
+});
+document.getElementById('item-2').addEventListener('click', function (event) {
+    console.log('Item-2 third clicked');
+});
+document.getElementById('item-2').addEventListener('click', function (event) {
+    console.log('Item-2 fourth clicked');
+});
+document.getElementById('list-ul').addEventListener('click', function () {
+    console.log('ul clicked');
+})
+document.getElementById('list-container').addEventListener('click', function () {
+    console.log('section container clicked');
+})
+document.getElementById('body').addEventListener('click', function () {
+    console.log('body of the html clicked');
+})
+    // </script>
+// </body >
+
+//--------------------------------------------------------------
+//----------------------------delegate--------------------------
+//--------------------------------------------------------------
+
