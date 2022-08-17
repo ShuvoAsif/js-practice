@@ -126,6 +126,14 @@ title.setAttribute('attributeName, value')
 //---to create attribute---
 title.createAttribute('localName, string')
 
+
+//--------------------------------------------------------------
+//-------------------------to add class-------------------------
+//--------------------------------------------------------------
+
+
+newtagname.classList.add('classname')
+
 //--------------------------------------------------------------
 //-----------------------------node-----------------------------
 //--------------------------------------------------------------
@@ -185,18 +193,53 @@ section.appendChild(ul);
 
 mainContainer.appendChild(section);
 
+//------------------------------------------------------------------
+//--------------------toset innerHTML directly----------------------
+//------------------------------------------------------------------
 
-// set innerHTML directly
-const sectionDress = document.createElement('section');
-sectionDress.innerHTML = `
-<h1>My Dress section</h1>
-<ul>
-    <li>T-shirt</li>
-    <li>Lungi</li>
-    <li>Sando genji</li>
-</ul>
+
+// {/* <main id="main-container"> */}
+// <section>
+// <h1>My Awesome DOM de baba</h1>
+// <ul>
+// <li>Jalali Set</li>
+// <li>Shafayet</li>
+// <li>bonobash</li>
+// <li>DOM de re baba</li>
+// </ul>
+// </section>
+// <section class="fruits-container">
+// <h1 id="fruits-title" class="some-class random-class blue-bg">Fruits I like</h1>
+// <ul>
+// <li>Apple</li>
+// <li>Banana</li>
+// <li>Carrot</li>
+// </ul>
+// </section>
+// <section id="places-container" class="large-text">
+// <h1 id="places-title">Places I like to visit</h1>
+// <ul id="places-list">
+// <li class="important-places">Soondarban</li>
+// <li class="important-places">bandorban</li>
+// <li class="important-places">Kataban</li>
+// <li class="other-place">shalbon</li>
+// </ul>
+// </section>
+// </main>
+
+const main = document.getElementById('main-container');
+const nsection = document.createElement('section');
+section.innerHTML = `
+    <h1> My dynamic section</h1>
+    <p>Extra text added inside paragraph</p>
+    <ul>
+        <li>first item</li>
+        <li>first item</li>
+        <li>first item</li>
+        <li>first item</li>
+    </ul>
 `
-mainContainer.appendChild(sectionDress);
+main.appendChild(section);
 
 
 //--------------------------------------------------------------
@@ -427,10 +470,51 @@ document.getElementById('list-container').addEventListener('click', function () 
 document.getElementById('body').addEventListener('click', function () {
     console.log('body of the html clicked');
 })
-    // </script>
+// </script>
 // </body >
 
 //--------------------------------------------------------------
 //----------------------------delegate--------------------------
 //--------------------------------------------------------------
 
+// delegate to parentnode
+
+
+// < body >
+// <h1>Explore Event Delegate</h1>
+// <section>
+// <ul id="list-container">
+// <li class="item">Lorem, ipsum dolor.</li>
+// <li class="item">Facilis, repellendus ullam!</li>
+// <li class="item">Pariatur, quo beatae.</li>
+// <li class="item">Iure, accusamus explicabo!</li>
+// <li class="item">Reprehenderit, suscipit minus!</li>
+// <li class="item">Earum, dolores eius?</li>
+// </ul>
+// <button id="btn-add-item">Add Item</button>
+// </section>
+// <script>
+// const items = document.getElementsByClassName('item');
+// for (const item of items) {
+// item.addEventListener('click', function (event) {
+// event.target.parentNode.removeChild(event.target);
+// })
+// }
+
+document.getElementById('list-container').addEventListener('click', function (event) {
+    console.log(event.target);
+    event.target.parentNode.removeChild(event.target);
+})
+
+
+
+document.getElementById('btn-add-item').addEventListener('click', function () {
+    const listContainer = document.getElementById('list-container');
+
+    const li = document.createElement('li');
+    li.innerText = 'Brand New Item added';
+    li.classList.add('item');
+    listContainer.appendChild(li);
+})
+    // </script>
+// </body >
