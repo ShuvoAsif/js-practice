@@ -516,5 +516,132 @@ document.getElementById('btn-add-item').addEventListener('click', function () {
     li.classList.add('item');
     listContainer.appendChild(li);
 })
-    // </script>
+// </script>
 // </body >
+
+//----------------------------------------------------------
+//---------------------------date---------------------------
+//----------------------------------------------------------
+
+const today = new Date();
+console.log(today);
+
+const date1 = new Date('1971-03-26');
+const date2 = new Date('1971-12-16');
+
+if (date1.getTime() < date2.getTime()) {
+    console.log('march was before december');
+}
+else {
+    console.log('march was not before december')
+}
+
+
+//---------------------------------------------------------
+//-------------------------error---------------------------
+//---------------------------------------------------------
+
+// not in JS that frequently: range error 
+const numbers = [3, 4, 5, 8];
+// you should not do it (most of the time)
+numbers.length = 2;
+console.log(numbers);
+console.log(numbers.length);
+// console.log(numbers[25]);
+
+// reference error
+// console.log(money);
+const money = 80;
+
+// syntax 
+// for(let i = 0; i < 5 i++){
+
+// }
+
+// if(numbers.length > 2){
+
+// }
+// else 
+
+let student = { address: 'kochukhet' };
+console.log(student.address.city)
+
+//---------------------------------------------------------
+//-----------------------try catch-------------------------
+//---------------------------------------------------------
+
+const day = 'day the din';
+console.log(day);
+console.log(25);
+// console.log(district);
+// let district = 'bBaria';
+console.log(100);
+console.log(100);
+console.log(100);
+
+try {
+    console.log('inside try');
+    // console.log(student);
+    console.log(district);
+    let district = 'bBaria';
+    console.log('after error')
+}
+catch (error) {
+    console.log('inside catch')
+    // console.log(error);
+}
+finally {
+    console.log('finally done')
+}
+console.log('last line of the code')
+
+//-------------------------------------------------------
+//----------------------validation-----------------------
+//-------------------------------------------------------
+
+const number = 23;
+// string, number, boolean
+if (typeof number === 'number') {
+    console.log('value is a number')
+}
+else {
+    console.log('value is not a number')
+}
+
+const numbers = [3, 12, 78, 90];
+const students = { name: 'Rongila Rafsan', job: 'khawadawa kora' }
+// console.log(Array.isArray(numbers));
+console.log(Array.isArray(number));
+console.log(typeof students);
+
+//--------------------------------------------------------
+//----------------------need to know----------------------
+//--------------------------------------------------------
+
+/* 
+1. how to use js with html and css
+2. get element or elements from dom
+    2-1: getElementById
+    2-2: getElementsByClassName
+    2-3: querySelector
+    2-4: querySelectorAll
+
+3. dynamically add element to the dom: document.createElement
+    3-5: set value to the innerHTML 
+
+4. get and set value from/to a dom element
+    4-1: use innerText  (h1, p, h5, div, span, strong)
+    4-2: use value (input, textArea)
+
+5. add event lister (event handler)
+    5-1: click, focus, blur, onchange, keyup
+    5-2: addEventListener onclick="myHandler()"
+
+
+6. use function to reduce duplicate code 
+
+7. event bubble and event delegate
+*/
+
+document.querySelectorAll('.users-container .disable h3')
+document.querySelectorAll('.my-users li')
