@@ -149,6 +149,8 @@ console.log(names);
 //-----------------------------destructuring----------------------------
 //----------------------------------------------------------------------
 
+// set multy variable for array and object 
+
 const fish = {
     name: 'King Hilsa',
     address: 'Chandpur',
@@ -194,6 +196,7 @@ console.log(chacha, baba);
 //------------------------------spread---------------------------------
 //---------------------------------------------------------------------
 
+// use for saparet array by ...
 const max = Math.max(12, 85, 999, 78);
 // console.log(max);
 const nnumbers = [12, 85, 999, 78];
@@ -478,6 +481,7 @@ class Instructor extends TeamMember {
     team = 'web team';
     constructor(name, location) {
         super(name, location);
+        // super use as for parent functions alternative 
     }
     startSupportSession(time) {
         // console.log(`start the support session at ${time}`)
