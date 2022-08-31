@@ -75,8 +75,8 @@ const add5 = function (first, second) {
 // arrow function
 const add6 = (first, second) => first + second;
 
-const result = add6(10, 20);
-console.log(result);
+const nresults = add6(10, 20);
+console.log(nresults);
 
 // interview question: differences between 
 // function declaration, function expression and arrow function
@@ -196,8 +196,8 @@ console.log(chacha, baba);
 
 const max = Math.max(12, 85, 999, 78);
 // console.log(max);
-const numbers = [12, 85, 999, 78];
-const largest = Math.max(...numbers);
+const nnumbers = [12, 85, 999, 78];
+const largest = Math.max(...nnumbers);
 // console.log(...numbers);
 // console.log(largest);
 
@@ -242,4 +242,311 @@ const summary = 'sum of: ' + a + ' and ' + b + ' is: ' + (a + b);
 // console.log(summary)
 
 const newSummary = `sum of ${a} and ${b} is: ${a + b}`;
-console.log(newSummary)
+// console.log(newSummary)
+
+
+const getGirlFriend = (name = "chokina") => "name";
+// console.log(getGirlFriend());
+
+//---------------------------------------------------------------------
+//------------------------------chaining-------------------------------
+//---------------------------------------------------------------------
+
+const users = [{ id: 1, name: 'abul', job: 'doctor' }]
+
+// console.log(users[0].name);
+
+const data = {
+    count: 5000,
+    data: [
+        { id: 1, name: 'babul', job: 'leader' },
+        { id: 2, name: 'dabul', job: 'leader' },
+    ]
+}
+const firstJob = data.data[0].job;
+// console.log(firstJob);
+
+const user = {
+    id: 5001,
+    name: 'Thomas alba edison',
+    address: {
+        street: {
+            first: '35/A kochukhet lane',
+            second: 'third floor',
+            third: 'right side'
+        },
+        postOffice: 'cantonment',
+        city: 'Dhaka'
+    }
+}
+
+const userFloor = user.address?.stret?.second;
+// console.log(userFloor);
+
+//---------------------------------------------------------------
+//-----------------------------map-------------------------------
+//---------------------------------------------------------------
+
+const numbers = [2, 8, 4, 6, 3];
+
+
+function getDoubles(numbers) {
+    const output = [];
+    for (const number of numbers) {
+        const doubled = doubleIt(number);
+        output.push(doubled);
+    }
+    return output;
+}
+
+function doubleItOld(num) {
+    return num * 2;
+}
+
+
+const doubleIts = num => num * 2;
+
+const makeDouble = numbers.map(doubleIt);
+const makeDoubleDirect = numbers.map(num => num * 2)
+const makeDouble2 = numbers.map(x => x * 2);
+// console.log(makeDoubleDirect);
+const fiveTimess = [1, 2, 3, 4, 5].map(x => x * 5);
+// console.log(fiveTimes);
+/* 
+purpose: 
+1. get an array
+2. for every elements of the array do something
+3. store the result in an array
+4. return the result array
+*/
+
+const result = getDoubles(numbers);
+// console.log(result);
+// console.log(makeDouble);
+
+
+const nnnumbers = [12, 56, 87, 44];
+const half = nnnumbers.map(n => n / 2)
+const thirds = nnnumbers.map(x => x / 3);
+// console.log(half);
+// console.log(thirds);
+
+const friendss = ['Tom Hanks', 'Tom Cruise', 'Tom Brady', 'TOM Solaiman'];
+const firstLetters = friendss.map(friends => friends[0]);
+// console.log(firstLetters);
+const nameLengths = friendss.map(friends => friends.length);
+// console.log(nameLengths);
+
+const nproductss = [
+    { id: 1, name: 'laptop', price: 45000 },
+    { id: 1, name: 'mobile', price: 80000 },
+    { id: 1, name: 'watch', price: 35000 },
+    { id: 1, name: 'tablet', price: 23000 },
+];
+
+// const items = products.map(product => console.log(product.name));
+const items = products.map(product => product.name);
+const prices = products.map(p => p.price);
+// console.log(items)
+// console.log(prices);
+
+//----------------------------------------------------------------
+//-----------------------------filter-----------------------------
+//----------------------------------------------------------------
+
+const numbeers = [12, 5, 23, 45, 11, 18, 9, 55, 61, 1];
+const bigNums = numbeers.filter(number => number > 20);
+const tiny = numbeers.filter(n => n < 10);
+const even = numbeers.filter(num => num % 2 === 0);
+// console.log(even);
+
+const products = [
+    { id: 1, name: 'laptop', price: 45000 },
+    { id: 1, name: 'mobile', price: 80000 },
+    { id: 1, name: 'watch', price: 35000 },
+    { id: 1, name: 'tablet', price: 23000 },
+];
+
+// const expensive = products.filter(product => product.price > 100000);
+// const expensive = products.filter(product => product.price > 100);
+const expensive = products.filter(product => product.price < 100);
+// console.log(expensive);
+
+//-----------------------------------------------------------------
+//------------------------------find-------------------------------
+//-----------------------------------------------------------------
+
+const numbersn = [12, 5, 23, 45, 11, 18, 9, 55, 61, 1];
+
+const fives = numbersn.find(num => num % 5 === 0)
+const fivesAll = numbersn.filter(num => num % 5 === 0);
+
+// console.log(fives);
+// console.log(fivesAll);
+
+const nproducts = [
+    { id: 1, name: 'laptop', price: 65000 },
+    { id: 2, name: 'mobile', price: 80000 },
+    { id: 3, name: 'watch', price: 30000 },
+    { id: 4, name: 'tablet', price: 23000 },
+];
+
+const cheap = nproducts.find(nproduct => nproduct.price < 40000);
+// console.log(cheap)
+
+//------------------------------------------------------------------
+//-----------------------------reduce-------------------------------
+//------------------------------------------------------------------
+
+// map, forEach, filter, find, reduce
+const nummberss = [1, 2, 3, 4, 5];
+// .reduce (accumulatorFunction, initial value)
+// accumulatorFunction use two parameters 
+// const total = numbers.reduce( (previous, current) => previous + current , 0);
+const total = nummberss.reduce((previous, current) => {
+    console.log(previous, current);
+    return previous + current
+}, 0);
+// console.log(total);
+
+//-----------------------------------------------------------------
+//------------------------------forEach----------------------------
+//-----------------------------------------------------------------
+
+const friends = ['Tom Hanks', 'Tom Cruise', 'Tom Brady', 'TOM Solaiman'];
+
+friends.forEach(friend => {
+
+})
+
+
+const productss = [
+    { id: 1, name: 'laptop', price: 45000 },
+    { id: 1, name: 'mobile', price: 80000 },
+    { id: 1, name: 'watch', price: 35000 },
+    { id: 1, name: 'tablet', price: 23000 },
+];
+
+// productss.forEach(products => console.log(products));
+
+//-----------------------------------------------------------------
+//----------------------------class--------------------------------
+//-----------------------------------------------------------------
+
+// syntactic sugar
+class Instructor {
+    name;
+    designation = 'Web Course Instructor'
+    team = 'web team'
+    location;
+    constructor(name, location) {
+        this.name = name;
+        this.location = location;
+    }
+    startSupportSession(time) {
+        // console.log(`start the support session at ${time}`)
+    }
+    createQuiz(module) {
+        // console.log(`please create quiz for module ${module}`)
+    }
+}
+const aamir = new Instructor('aamir', 'mumbai')
+// console.log(aamir);
+aamir.startSupportSession('9.00');
+aamir.createQuiz(60);
+
+const solaiman = new Instructor('Solaiman Khan', 'dhaka')
+// console.log(solaiman);
+
+//-----------------------------------------------------------------
+//----------------------------extends------------------------------
+//-----------------------------------------------------------------
+
+class TeamMember {
+    name;
+    location;
+    constructor(name, location) {
+        this.name = name;
+        this.location = location;
+    }
+    provideFeedback() {
+        // console.log(`${this.name} thank you for your feedback.`)
+    }
+}
+class Instructor extends TeamMember {
+    designation = 'Web Course Instructor'
+    team = 'web team';
+    constructor(name, location) {
+        super(name, location);
+    }
+    startSupportSession(time) {
+        // console.log(`start the support session at ${time}`)
+    }
+    createQuiz(module) {
+        // console.log(`please create quiz for module ${module}`)
+    }
+}
+
+class Developer extends TeamMember {
+    designation = 'Web Course Instructor'
+    team = 'web team'
+    tech;
+    constructor(name, location, tech) {
+        super(name, location);
+        this.tech = tech;
+    }
+    developFeature(feature) {
+        // console.log(`Please develop the  ${feature}`)
+    }
+    release(version) {
+        // console.log(`please release the version ${version}`)
+    }
+}
+
+class JobPlacement extends TeamMember {
+    designation = 'Job Placement Commandos'
+    team = 'Job Placement'
+    region;
+    constructor(name, location, region) {
+        super(name, location);
+        this.region = region;
+    }
+    provideResume(feature) {
+        // console.log(`Please develop the  ${feature}`)
+    }
+    prepareStudent(version) {
+        // console.log(`please release the version ${version}`)
+    }
+}
+
+const alia = new Developer('Alia Bhatt', 'Dhaka', 'React');
+// console.log(alia);
+alia.provideFeedback();
+const bipasha = new JobPlacement('bipasha', 'kolkata', 'India');
+// console.log(bipasha);
+
+
+//------------------------------------------------------------
+//------------------------notation----------------------------
+//------------------------------------------------------------
+
+const student = {
+    name: 'Kolim Uddin',
+    age: 15,
+    class: 'Ten',
+    marks: {
+        math: 78,
+        physics: 89,
+        chemistry: 65
+    },
+
+}
+
+const marks = student.marks;
+const math = student.marks.math;
+
+const chemistry = student['marks']['chemistry'];
+const subject = 'math';
+const subjectMarks = student.marks[subject];
+const marks2 = student.marks[subject];
+// console.log(marks2);
