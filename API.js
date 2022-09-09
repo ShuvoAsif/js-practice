@@ -628,3 +628,191 @@ const displayMealDetails = meal => {
 }
 
 loadMeals('');
+
+//------------------------------------------------------------------------------
+//-------------------------------phone hunter-----------------------------------
+//------------------------------------------------------------------------------
+
+
+/*<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Phone Hunter</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+</head>
+
+<body>
+    <header>
+        <h1>Welcome to my Phone Hunter!</h1>
+    </header>
+    <main class="container">
+        <section>
+            <div class="mb-3 w-50">
+                <input id="search-field" type="email" class="form-control" id="exampleFormControlInput1"
+                    placeholder="search your phone">
+                <div id="btn-search" class="btn btn-primary">Search</div>
+            </div>
+        </section>
+        <!-- display Search Result -->
+        <section>
+            <div id="phones-container" class="row row-cols-1 row-cols-md-3 g-4">
+
+            </div>
+            <div id="no-found-message" class="mt-4 d-none">
+                <h3 class="text-warning">No Phone Found. Please try a new search</h3>
+            </div>
+            <div id="show-all" class="text-center d-none">
+                <div id="btn-show-all" class="btn btn-primary">Show All</div>
+            </div>
+        </section>
+        <!-- loader -->
+        <section id="loader" class="d-none">
+            <div style="height: 400px;" class="d-flex justify-content-center align-items-center">
+                <div class="spinner-border  text-success" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+        </section>
+        <!-- modal contents -->
+        <section>
+            
+            <!-- Modal -->
+            <div class="modal fade" id="phoneDetailModal" tabindex="-1" aria-labelledby="phoneDetailModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="phoneDetailModalLabel"></h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div id="phone-details" class="modal-body">
+                            
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+        crossorigin="anonymous"></script>
+    <script src="js/app.js"></script>
+</body>
+
+</html>*/
+
+const loadPhones = async (searchText, dataLimit) => {
+    const url = `https://openapi.programming-hero.com/api/phones?search=${searchText}`
+    const res = await fetch(url);
+    const data = await res.json();
+    displayPhones(data.data, dataLimit);
+}
+
+const displayPhones = (phones, dataLimit) => {
+    const phonesContainer = document.getElementById('phones-container');
+    phonesContainer.textContent = '';
+    // display 10 phones only 
+    const showAll = document.getElementById('show-all');
+    if (dataLimit && phones.length > 10) {
+        phones = phones.slice(0, 10);
+        showAll.classList.remove('d-none');
+    }
+    else {
+        showAll.classList.add('d-none');
+    }
+
+
+    // display no phones found
+    const noPhone = document.getElementById('no-found-message');
+    if (phones.length === 0) {
+        noPhone.classList.remove('d-none');
+    }
+    else {
+        noPhone.classList.add('d-none');
+    }
+    // display all phones
+    phones.forEach(phone => {
+        const phoneDiv = document.createElement('div');
+        phoneDiv.classList.add('col');
+        phoneDiv.innerHTML = `
+        <div class="card p-4">
+            <img src="${phone.image}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">${phone.phone_name}</h5>
+                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <button onclick="loadPhoneDetails('${phone.slug}')" href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#phoneDetailModal">Show Details</button>
+                
+            </div>
+        </div>
+        `;
+        phonesContainer.appendChild(phoneDiv);
+    });
+    // stop spinner or loader
+    toggleSpinner(false);
+}
+
+const processSearch = (dataLimit) => {
+    toggleSpinner(true);
+    const searchField = document.getElementById('search-field');
+    const searchText = searchField.value;
+    loadPhones(searchText, dataLimit);
+}
+
+// handle search button click
+document.getElementById('btn-search').addEventListener('click', function () {
+    // start loader
+    processSearch(10);
+})
+
+// search input field enter key handler
+document.getElementById('search-field').addEventListener('keypress', function (e) {
+    if (e.key === 'Enter') {
+        processSearch(10);
+    }
+});
+
+const toggleSpinner = isLoading => {
+    const loaderSection = document.getElementById('loader');
+    if (isLoading) {
+        loaderSection.classList.remove('d-none')
+    }
+    else {
+        loaderSection.classList.add('d-none');
+    }
+}
+
+
+// not the best way to load show All
+document.getElementById('btn-show-all').addEventListener('click', function () {
+    processSearch();
+})
+
+const loadPhoneDetails = async id => {
+    const url = `https://openapi.programming-hero.com/api/phone/${id}`;
+    const res = await fetch(url);
+    const data = await res.json();
+    displayPhoneDetails(data.data);
+}
+
+const displayPhoneDetails = phone => {
+    console.log(phone);
+    const modalTitle = document.getElementById('phoneDetailModalLabel');
+    modalTitle.innerText = phone.name;
+    const phoneDetails = document.getElementById('phone-details');
+    console.log(phone.mainFeatures.sensors[0]);
+    phoneDetails.innerHTML = `
+        <p>Release Date: ${phone.releaseDate ? phone.releaseDate : 'No Release Date Found'}</p>
+        <p>Storage: ${phone.mainFeatures ? phone.mainFeatures.storage : 'No Storage Information '}</p>
+        <p>Others: ${phone.others ? phone.others.Bluetooth : 'No Bluetooth Information'}</p>
+        <p>Sensor: ${phone.mainFeatures.sensors ? phone.mainFeatures.sensors[0] : 'no sensor'}</p>
+    `
+}
+
+loadPhones('apple');
