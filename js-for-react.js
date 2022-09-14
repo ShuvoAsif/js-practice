@@ -2,7 +2,7 @@
 //--------------------------array-methods-------------------------------
 //----------------------------------------------------------------------
 
-const products = [
+const prroducts = [
     { name: 'laptop', price: 3200, brand: 'lenovo', color: 'silver' },
     { name: 'phone', price: 7000, brand: 'iphone', color: 'golden' },
     { name: 'watch', price: 3000, brand: 'casio', color: 'yellow' },
@@ -10,9 +10,9 @@ const products = [
     { name: 'camera', price: 9000, brand: 'canon', color: 'gray' }
 ];
 
-const brands = products.map(product => product.brand);
+const brands = prroducts.map(product => product.brand);
 // console.log(brands);
-const prices = products.map(product => product.price);
+const prices = prroducts.map(product => product.price);
 // console.log(prices);
 
 // products.forEach(product => console.log(product))
@@ -24,15 +24,15 @@ products.forEach(product => {
 
 
 // 3. filter
-const cheap = products.filter(product => product.price <= 5000);
+const cheap = prroducts.filter(product => product.price <= 5000);
 // console.log(cheap);
 
-const specificName = products.filter(p => p.name.includes('n'));
+const specificName = prroducts.filter(p => p.name.includes('n'));
 // console.log(specificName);
 
 
 //4. find
-const special = products.find(p => p.name.includes('n'));
+const special = prroducts.find(p => p.name.includes('n'));
 console.log(special);
 
 //----------------------------------------------------------------------
@@ -40,14 +40,14 @@ console.log(special);
 //----------------------------------------------------------------------
 
 // 1. array destructuring
-const numbers = [42, 65];
-// const x = numbers[0];
-// const y = numbers[1];
+const nnumbers = [42, 65];
+// const x = nnumbers[0];
+// const y = nnumbers[1];
 
 // const [x, y] = [42, 65]
 
 
-const [x, y] = numbers;
+const [x, y] = nnumbers;
 
 function boxify(num1, num2) {
     const nums = [num1, num2];
@@ -58,18 +58,18 @@ function boxify(num1, num2) {
 const [first, second] = boxify(90, 34);
 
 // console.log(boxify(90, 34));
-const student = {
+const sttudent = {
     name: 'Salib Khan',
     age: 32,
     movies: ['king khan', 'Dhakar Mastan']
 }
 
-const [firstMovie, secondMovie] = student.movies;
+const [firstMovie, secondMovie] = sttudent.movies;
 
 
 // object destructuring
 const { name, age } = { name: 'alu', age: 14 };
-const { name, age } = { id: 12, name: 'alu', salary: 3400, age: 14 };
+const { names, ages } = { id: 12, names: 'alu', salary: 3400, ages: 14 };
 
 const employee = {
     ide: 'VS Code',
@@ -97,15 +97,15 @@ const { brand } = employee?.specification?.watch;
 //-------------------------------ES6------------------------------------
 //----------------------------------------------------------------------
 
-const numbers = [89, 35, 98, 12];
-const student = {
+const numbbers = [89, 35, 98, 12];
+const stuudent = {
     name: 'Salib Khan',
     age: 32,
     movies: ['king khan', 'Dhakar Mastan']
 };
 
 // 1. template string
-const about = `My Name is ${student.name} age of ${student.age} has number ${numbers[2]} also liked movies ${student.movies[0]}`;
+const about = `My Name is ${stuudent.name} age of ${stuudent.age} has number ${numbbers[2]} also liked movies ${stuudent.movies[0]}`;
 console.log(about)
 
 // 2. arrow function
@@ -142,12 +142,12 @@ console.log(currentNumbers);
 
 // 1. JSON => stringify, parse
 
-const student = {
+const studentt = {
     name: 'Salib Khan',
     age: 32,
     movies: ['king khan', 'Dhakar Mastan']
 }
-const studentJSON = JSON.stringify(student);
+const studentJSON = JSON.stringify(studentt);
 // console.log(student);
 // console.log(studentJSON);
 
@@ -165,9 +165,9 @@ const keys = Object.keys(student);
 const values = Object.values(student);
 
 // for 
-const numbers = [23, 54, 67, 87, 23, 78];
-numbers.forEach(num => console.log(num));
-numbers.map(num => num * 2);
+const numbeers = [23, 54, 67, 87, 23, 78];
+numbeers.forEach(num => console.log(num));
+numbeers.map(num => num * 2);
 
 // for of on array like object
 // loop on an object using for in 
