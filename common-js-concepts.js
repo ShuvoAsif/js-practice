@@ -68,6 +68,10 @@ console.log(typeof null);
 
 const firrst = [45, 54, 98];
 const second = [45, 54, 98];
+
+//=== type and value compare/type coercion
+//== value compare
+
 if (firrst === second) {
     console.log('values are equal')
 }
@@ -166,6 +170,7 @@ console.log(p, q);
 
 // array like object
 function sum(a, b, c) {
+    // arguments is all the parameters which are sent
     const args = [...arguments];
     // console.log(args);
     const result = a + b + c;
@@ -174,11 +179,15 @@ function sum(a, b, c) {
 // console.log(arguments);
 const totals = sum(45, 89, 12, 45, 98, 56);
 // console.log(total);
+
+// how many parametr decleraed in this function 
 console.log(sum.length);
 
 //------------------------------------------------------------------------
 //-------------------------------callback---------------------------------
 //------------------------------------------------------------------------
+
+// calling a function as a parameter with a function 
 
 function greeting(greetingHandler, name) {
     greetingHandler(name);
@@ -215,6 +224,7 @@ document.getElementById('btn-submit').addEventListener('click', submitHandler)
 //--------------------------------closure---------------------------------
 //------------------------------------------------------------------------
 
+// calling function from inside a function and record individual count
 function kitchen() {
     let roast = 0;
     return function () {
