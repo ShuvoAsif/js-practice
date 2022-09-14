@@ -3,19 +3,19 @@
 //---------------------------------------------------------------
 
 
-//The Document Object:
+/*The Document Object:
 
-//1.When an HTML document is loaded into a web browser, it becomes a document object.
+1.When an HTML document is loaded into a web browser, it becomes a document object.
 
-//2.The document object is the root node of the HTML document.
+2.The document object is the root node of the HTML document.
 
-//3.The document object is a property of the window object.
+3.The document object is a property of the window object.
 
-//4.The document object is accessed with: document.
+4.The document object is accessed with: document.
 
 
-//'for each and for of' can use for nodeLIst which is get by queryselectorall.
-//'for of' use for get by id and class .
+'for each and for of' can use for nodeLIst which is get by queryselectorall.
+'for of' use for get by id and class .*/
 
 
 //---------------------------------------------------------------
